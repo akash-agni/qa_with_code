@@ -52,7 +52,7 @@ def clone_repo(url: str, repo_root_dir: Optional[str] = None) -> str:
 
     run_command(f"git clone {url} {repo_root_dir}")
 
-    return root_dir
+    return repo_root_dir
 
 
 def load_creds() -> None:
@@ -160,6 +160,7 @@ def qa_loop(qa: Any):
     while True:
         question = input("Question:\n")
         if question == "quit()":
+            print("Ending conversational chain, thank you!!")
             break
         result = qa({"question": question, "chat_history": chat_history})
         chat_history.append((question, result["answer"]))
